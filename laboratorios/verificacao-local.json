@@ -1,0 +1,11 @@
+{
+  "modules": 25,
+  "labs": 25,
+  "bash_blocks_syntax_checked": 62,
+  "python_files_compiled": 5,
+  "app_safe_tests": "pass",
+  "unsafe_regression": "fails as expected",
+  "restored_tests": "pass",
+  "jira_payload_and_stable_label": "pass",
+  "external_accounts": "not executed"
+}

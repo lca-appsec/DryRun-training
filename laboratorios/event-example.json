@@ -1,0 +1,11 @@
+{
+  "repo_full_name": "training/dryrun-training",
+  "pr_number": 1,
+  "dashboard_url": "https://app.dryrun.security",
+  "results": [{
+    "id": "lab-sqli-001", "type": "SQL Injection",
+    "filename": "app.py", "line_start": 20, "line_end": 21,
+    "description": "Exemplo sintetico: entrada concatenada na consulta.",
+    "risk": "High", "finding_type": "pullrequest"
+  }]
+}
