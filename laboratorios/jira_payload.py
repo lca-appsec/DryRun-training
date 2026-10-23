@@ -1,4 +1,4 @@
-"""Converte UM finding do webhook generico para Jira Cloud v3."""
+"""Converts ONE generic webhook finding to a Jira Cloud v3 payload."""
 import json
 import os
 import sys
@@ -33,4 +33,4 @@ payload = {'fields': {
 }}
 Path('.evidence/jira-create.json').write_text(json.dumps(payload, indent=2))
 Path('.evidence/jira-label.txt').write_text(label)
-print('Payload pronto. Label:', label)
+print('Payload ready. Label:', label)

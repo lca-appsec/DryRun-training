@@ -1,4 +1,4 @@
-"""Aplicacao didatica: somente loopback; nenhuma autenticacao real."""
+"""Teaching application: loopback only; no real authentication."""
 import json
 import sqlite3
 from http.server import BaseHTTPRequestHandler, HTTPServer

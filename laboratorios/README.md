@@ -1,27 +1,57 @@
-# Kit do treinamento DryRun Security
+# Kit do aluno / Student kit
 
-Leia o PDF antes de executar os laboratórios. Os arquivos são exemplos autorais;
-não há credenciais incluídas e nenhum script envia dados automaticamente ao Jira.
+Este kit acompanha a edição 2 do treinamento DryRun, de 23/10/2026.
+This kit accompanies edition 2 of the DryRun course, dated 2026-10-23.
 
-- lab.sh: funções Bash do curso; carregue com `source "$KIT/lab.sh"`.
-- app.py: aplicação local segura, usando apenas Python padrão.
-- test_app.py: teste funcional e teste de regressão de SQL injection.
-- change.py: alterna a consulta de app.py entre segura e vulnerável, somente no lab.
-- receiver.py: captura webhooks em `.evidence/events`; não é serviço de produção.
-- jira_payload.py: gera payload Jira v3 de um item em `results` para revisão.
-- event-example.json: evento sintético para testar a transformação.
-- treinamento-fonte.md: versão editável do conteúdo do PDF.
-- verificacao-local.json: resumo dos testes executados na autoria.
+## Português
 
-Use um repositório privado dedicado. Apenas app.py e test_app.py são copiados
-para a base inicial. Os demais arquivos ficam fora do repositório analisado.
-Não mescle código vulnerável na main. As funções lab_* não são uma CLI DryRun.
+Leia primeiro a preparação no PDF ou em treinamento-fonte.md. O curso cria duas
+pastas diferentes: `material` guarda o conteúdo; `repo` recebe os exercícios.
+Não crie PRs vulneráveis no repositório que guarda o treinamento.
 
-Execução dos testes da base segura, na pasta que contém os dois arquivos:
+No modo ZIP, extraia os arquivos em `$HOME/dryrun-student/material/laboratorios`.
+No modo clone, o roteiro já coloca os arquivos nesse caminho. O módulo 2 cria
+`session.sh`, sem tokens; carregue-o em cada terminal novo. O código completo
+dos auxiliares está no apêndice do PDF.
+
+As mensagens dos scripts são em inglês nos dois idiomas. O texto de cada passo
+explica o que deve aparecer. Algumas falhas de teste são intencionais; não
+mescle as versões vulneráveis na main.
+
+## English
+
+Read setup in the PDF or training-source-en.md first. The course uses two separate
+folders: `material` stores the content; `repo` hosts exercises. Do not create
+vulnerable PRs in the training-material repository.
+
+For ZIP setup, extract files into `$HOME/dryrun-student/material/laboratorios`.
+Clone setup already places them there. Module 2 generates `session.sh` without
+tokens; load it in each new terminal. Full helper source is in the PDF appendix.
+
+Scripts use English messages in both editions; each step explains expected
+output. Some test failures are intentional. Do not merge vulnerable versions
+into main.
+
+## Files
+
+- `app.py`, `test_app.py`: safe local application and two tests.
+- `change.py`: toggles only the educational SQL query after checking its state.
+- `lab.sh`: explained Bash helpers for branches, PRs, evidence and API reads.
+- `save_session.py`: stores paths/repo identity, never API keys.
+- `receiver.py`: local teaching webhook receiver, not a production service.
+- `jira_payload.py`: generates a reviewable Jira payload; makes no network calls.
+- `event-example.json`: synthetic event.
+- `treinamento-fonte.md`, `training-source-en.md`: full editable student guides.
+- `verificacao-local.json`: authoring test results, not evidence of live scans.
+
+## Local baseline test
+
+Run in the folder containing app.py and test_app.py:
 
 ```bash
 python3 -m unittest -v
 ```
 
-As integrações reais exigem suas próprias credenciais e não foram executadas
-nas suas contas durante a criação deste material.
+Real DryRun, Jira and Codex operations require your own credentials and access.
+No credentials are included. Local test results do not claim those integrations
+were executed in your accounts.

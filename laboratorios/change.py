@@ -1,4 +1,4 @@
-"""Altera apenas app.py no repositorio didatico, com checagem de estado."""
+"""Changes only the training app.py after checking its current state."""
 import pathlib
 import sys
 p = pathlib.Path('app.py')
@@ -12,5 +12,5 @@ assert mode in ('unsafe', 'safe')
 before, after = (safe, unsafe) if mode == 'unsafe' else (unsafe, safe)
 text = p.read_text()
 if text.count(before) != 1:
-    raise SystemExit('Estado inesperado de app.py; revise o diff.')
+    raise SystemExit('Unexpected app.py state; inspect the diff.')
 p.write_text(text.replace(before, after))

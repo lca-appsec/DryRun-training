@@ -1,11 +1,17 @@
 {
-  "modules": 25,
-  "labs": 25,
-  "bash_blocks_syntax_checked": 62,
-  "python_files_compiled": 5,
-  "app_safe_tests": "pass",
-  "unsafe_regression": "fails as expected",
+  "edition": "2026-10-23",
+  "modules_per_language": 25,
+  "guided_steps_per_language": 167,
+  "bash_blocks_checked": {
+    "pt": 151,
+    "en": 151
+  },
+  "language_command_parity": true,
+  "safe_tests": "pass",
+  "unsafe_injection_regression": "expected failure",
   "restored_tests": "pass",
+  "session_generation": "pass",
   "jira_payload_and_stable_label": "pass",
-  "external_accounts": "not executed"
+  "webhook_local_delivery_duplicate_and_wrong_path": "pass",
+  "live_DryRun_Jira_Codex_accounts": "not executed"
 }

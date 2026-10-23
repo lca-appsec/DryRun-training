@@ -1,4 +1,4 @@
-"""Receptor de laboratorio. Captura JSON; nao encaminha automaticamente ao Jira."""
+"""Teaching receiver. Saves JSON; does not forward to Jira."""
 import hashlib
 import hmac
 import json
@@ -13,7 +13,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
-        pass  # Nao registrar a URL que contem o segredo do laboratorio.
+        pass  # Do not log the URL containing the training path secret.
 
     def do_POST(self):
         if not hmac.compare_digest(self.path, '/hook/' + KEY):
@@ -26,7 +26,7 @@ class Handler(BaseHTTPRequestHandler):
                 return
             data = json.loads(self.rfile.read(size))
             if not isinstance(data, dict):
-                raise ValueError('Objeto JSON esperado')
+                raise ValueError('JSON object expected')
         except (ValueError, json.JSONDecodeError):
             self.send_error(400)
             return
@@ -36,13 +36,14 @@ class Handler(BaseHTTPRequestHandler):
         try:
             with dest.open('xb') as f:
                 f.write(raw)
-            print('Evento salvo:', dest, flush=True)
+            print('Event saved:', dest, flush=True)
         except FileExistsError:
-            print('Repeticao ignorada:', digest, flush=True)
+            print('Duplicate ignored:', digest, flush=True)
         self.send_response(202)
         self.end_headers()
         self.wfile.write(b'{"accepted":true}')
 
 
 if __name__ == '__main__':
+    print('Listening on 127.0.0.1:8080. Stop with Ctrl+C.', flush=True)
     HTTPServer(('127.0.0.1', 8080), Handler).serve_forever()
